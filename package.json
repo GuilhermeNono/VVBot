@@ -1,0 +1,29 @@
+{
+  "name": "vvbot",
+  "version": "1.0.0",
+  "description": "Bot Okami Coffee",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuilhermeNono/VVBot.git"
+  },
+  "author": "Guilherme Nono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuilhermeNono/VVBot/issues"
+  },
+  "homepage": "https://github.com/GuilhermeNono/VVBot#readme",
+  "dependencies": {
+    "discord.js": "^13.1.0",
+    "discord.js-pagination": "^1.0.3",
+    "dotenv": "^10.0.0",
+    "enmap": "^5.8.7",
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.0.3",
+    "mongoose-sequence": "^5.3.1",
+    "ms": "^2.1.3"
+  }
+}
