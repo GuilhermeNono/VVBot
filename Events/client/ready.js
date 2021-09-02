@@ -1,6 +1,6 @@
 const MembersCount = require('../cycleEvents/countMembers')
 
-module.exports = (Discord, client) => {
+module.exports = (client, Discord) => {
     console.log('Bot iniciado com sucesso!')
     MembersCount(client);
 }
