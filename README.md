@@ -2,7 +2,8 @@
 
 ## Bot de discord, focado principalmente na administração do servidor. O mesmo está sendo criado por uma unica pessoa, por esse motivo, o progresso terá de ser demorado. Em caso de bugs entre em contato com o desenvolvedor.
 
-###
+### ✪ Objetivos primarios
+
 - [ ] Comandos de punição
 - [ ] Sistemas de cargos por reação
 - [x] Contador de membros
