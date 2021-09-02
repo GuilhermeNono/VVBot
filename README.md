@@ -7,4 +7,11 @@
 - [ ] Sistemas de cargos por reação
 - [x] Contador de membros
 
+### 🛠 Tecnologias
+
+Foi usado na criação do bot:
+- [Node.js](https://nodejs.org/en/)
+
+###
+
 ![VIVY](https://media.discordapp.net/attachments/784542362813988904/883003585854603334/Screenshot_20210902-120206.png?width=673&height=701)
