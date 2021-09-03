@@ -1,17 +1,26 @@
 const ms = require('ms')
+const checkPermission = require('../../modules/checkPermission')
 module.exports = {
     name: "tempmute",
     aliases: ["tm"],
     description: "Comando para deixar o usuario mutado por tempo limitado.",
     async execute(client, message, args, Discord) {
-        //.tempmute @Discord 2m regra 1 
+        //.tempmute @Discord 2m regra 1
 
         if (message.deletable) message.delete();
 
+        //Verificando se o usuario tem o cargo necessario para usar esse comando
+        let memberAuthor = message.guild.members.cache.get(message.author.id).roles.cache.map(role => role.id)
+        let highRole = ["878372476390875197","735147189432483920"]
 
+        let denyHighRole = checkPermission.CheckPerm(memberAuthor,highRole)
+        if(denyHighRole) return message.channel.send("pinto pintinho pintao")
 
-        //Criando uma variavel com as informações do membro, e logo abaixo, verificando se o usuario não digitou o membro errado. 
-        let person = message.mentions.users.first() === undefined ? message.guild.members.cache.get(args[0]) : message.guild.members.cache.get(message.mentions.users.first().id)
+        //Criando uma variavel com as informações do membro, e logo abaixo, verificando se o usuario não digitou o membro errado e se o membro pode ser punido.
+        let personCheck = message.mentions.users.first() === undefined
+        let person1 = message.guild.members.cache.get(args[0])
+        // let person2 = message.guild.members.cache.get(message.mentions.users.first().id)
+        let person = personCheck ? person1 : person2
         if (/^[a-zA-Z]+$/.test(person)) {
             let errorCode = new Discord.MessageEmbed()
                 .setColor('#4293f5')
@@ -26,7 +35,9 @@ module.exports = {
                 .setFooter('Peach', 'https://media.discordapp.net/attachments/776094611470942208/801219459909287987/peach_san.png?width=701&height=701')
             return message.channel.send({ embeds: [errorCode] })
         }
-
+        let personRoles = person.roles.cache.map(role => role.id)
+        let denyTargetUserRole = checkPermission.CheckPerm(personRoles,highRole)
+        if(!denyTargetUserRole) return message.channel.send("pinto pintinho pintao")
         //Criando variavel para armazenar o tempo e verificando se o usuario digitou corretamente esse parametro.
         let time = args[1];
         let errorTime = new Discord.MessageEmbed()
@@ -39,7 +50,10 @@ module.exports = {
             return message.channel.send({ embeds: [errorTime] })
         }
 
-        //Criando, definindo a posição do cargo na hierarquia e setando para cada canal do servidor a devida permissão do cargo. 
+        //Criando uma variavel que armazene o motivo
+        let reason = message.content.split(" ").splice(3).join(" ")
+
+        //Criando, definindo a posição do cargo na hierarquia e setando para cada canal do servidor a devida permissão do cargo.
         let muteRole = await message.guild.roles.cache.find(role => role.name === "Muted");
         let cargos = await message.guild.roles.fetch().then(f => {
             return f.size
@@ -65,5 +79,9 @@ module.exports = {
                 channel.permissionOverwrites.edit(muteRole, { SEND_MESSAGES: false, ADD_REACTIONS: false })
             })
         }
+
+
+
+
     }
 }

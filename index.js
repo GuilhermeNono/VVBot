@@ -12,3 +12,4 @@ client.commands = new Discord.Collection();
 })
 
 client.login(process.env.DISCORD_TOKEN);
+//https://Discord.com/oauth2/authorize?client_id={idbot}&scope=bot&permissions=8
