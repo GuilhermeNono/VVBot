@@ -2,6 +2,9 @@
   "name": "vvbot",
   "version": "1.0.0",
   "description": "Bot Okami Coffee",
+  "engines": {
+    "node": "16.x"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node ."
