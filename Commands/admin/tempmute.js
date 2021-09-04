@@ -18,9 +18,7 @@ module.exports = {
 
         //Criando uma variavel com as informações do membro, e logo abaixo, verificando se o usuario não digitou o membro errado e se o membro pode ser punido.
         let personCheck = message.mentions.users.first() === undefined
-        let person1 = message.guild.members.cache.get(args[0])
-        // let person2 = message.guild.members.cache.get(message.mentions.users.first().id)
-        let person = personCheck ? person1 : person2
+        let person = personCheck ? await message.guild.members.fetch(args[0]) : await message.guild.members.fetch(message.mentions.users.first().id)
         if (/^[a-zA-Z]+$/.test(person)) {
             let errorCode = new Discord.MessageEmbed()
                 .setColor('#4293f5')
