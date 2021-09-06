@@ -143,6 +143,6 @@ module.exports = {
             .setColor('#0aff70')
             .setTitle("**Usuario mutado com sucesso.**")
         pubChannel.send({ embeds: [muteDesc] }).then(() => privChannel.send({ embeds: [idDesc] }))
-        message.channel.send({ embeds: [muteSuccess] }).then(m => setTimeout(() => m.delete(), 5000))
+        message.channel.send({ embeds: [muteSuccess] }).then(m => m.react("✅").then(setTimeout(() => m.delete(), 5000)))
     }
 }
