@@ -113,7 +113,7 @@ module.exports = {
             .setImage("https://media.discordapp.net/attachments/784542362813988904/883019655600554074/dragon-maid-tohru-eye.gif")
             .setFooter("Você não tá falando muito agora, não é?", "https://media.discordapp.net/attachments/784542362813988904/883003585854603334/Screenshot_20210902-120206.png?width=673&height=701")
 
-        //Setando os canais publicos e privados, e por ultimo, adicionando um teporizador para retirar o cargo de "Muted" depois de um certo tempo.
+        //Setando os canais publicos e privados, e por ultimo, adicionando um temporizador para retirar o cargo de "Muted" depois de um certo tempo.
         let pubChannel = message.guild.channels.cache.find(Channell => Channell.id === "884447339480232006")
         let privChannel = message.guild.channels.cache.find(Channell => Channell.id === "884448787286863902")
 
