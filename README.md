@@ -2,6 +2,9 @@
 
 ## Bot de discord, focado principalmente na administração do servidor. O mesmo está sendo criado por uma unica pessoa, por esse motivo, o progresso terá de ser demorado. Em caso de bugs entre em contato com o desenvolvedor.
 
+Sinta-se a vontade para utilizar o codigo para criar seu proprio bot, contudo eu peço que não use o template do jeito que está. Crie o seu proprio, com suas imagens, seus textos e sua criativade.
+
+
 ### ✪ Objetivos primarios
 
 - [ ] Comandos de punição
