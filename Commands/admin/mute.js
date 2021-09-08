@@ -6,7 +6,6 @@ module.exports = {
     description: "Comando para deixar o usuario mutado por tempo ilimitado.",
     async execute(client, message, args, Discord) {
         //t!mute @Discord Por que sim
-        if (message.deletable) message.delete();
 
         //Verificando se o usuario tem o cargo necessario para usar esse comando
         let memberAuthor = message.guild.members.cache.get(message.author.id).roles.cache.map(role => role.id)
@@ -53,7 +52,7 @@ module.exports = {
         if (!denyTargetUserRole) return message.channel.send({ embeds: [userCannotBeMuted] }).then(m => setTimeout(() => m.delete(), 7000))
         //Criando uma variavel que armazene o motivo
         let reason = message.content.split(" ").splice(2).join(" ")
-        if(reason === '') reason = "Indefinido"
+        if (reason === '') reason = "Indefinido"
 
         //Criando, definindo a posição do cargo na hierarquia e setando para cada canal do servidor a devida permissão do cargo.
         let muteRole = await message.guild.roles.cache.find(role => role.name === "Muted");
@@ -113,14 +112,13 @@ module.exports = {
             .setImage("https://media.discordapp.net/attachments/784542362813988904/883019655600554074/dragon-maid-tohru-eye.gif")
             .setFooter("Você não tá falando muito agora, não é?", "https://media.discordapp.net/attachments/784542362813988904/883003585854603334/Screenshot_20210902-120206.png?width=673&height=701")
 
-        //Setando os canais publicos e privados, e por ultimo, adicionando um temporizador para retirar o cargo de "Muted" depois de um certo tempo.
+        //Setando os canais publicos e privados.
         let pubChannel = message.guild.channels.cache.find(Channell => Channell.id === "884447339480232006")
         let privChannel = message.guild.channels.cache.find(Channell => Channell.id === "884448787286863902")
-
-        let muteSuccess = new Discord.MessageEmbed()
-            .setColor('#0aff70')
-            .setTitle("**Usuario mutado com sucesso.**")
-        pubChannel.send({ embeds: [muteDesc] }).then(() => privChannel.send({ embeds: [idDesc] }))
-        message.channel.send({ embeds: [muteSuccess] }).then(m => setTimeout(() => m.delete(), 5000))
+        //Enviando os embeds para seus respectivos canais
+        pubChannel.send({ embeds: [muteDesc] }).then(() => {
+            privChannel.send({ embeds: [idDesc] })
+            message.react("✅").then(() => setTimeout(() => message.delete(), 5000))
+        })
     }
 }

@@ -5,8 +5,6 @@ module.exports = {
     description: "Comando para retirar o Mute de um usuario.",
     async execute(client, message, args, Discord) {
         //t!unmute @Discord
-        if (message.deletable) message.delete();
-
         //Verificando se o usuario tem o cargo necessario para usar esse comando
         let memberAuthor = message.guild.members.cache.get(message.author.id).roles.cache.map(role => role.id)
         let highRole = ["878372476390875197", "735147189432483920"]
@@ -47,10 +45,7 @@ module.exports = {
             .setColor("#5dd408")
             .setTitle("**Esse usuario não está mutado**")
         if (alreadyHasRole) return message.channel.send({ embeds: [userIsNotMuted] })
-        person.roles.remove(muteRole.id);
-        let unmuteSuccess = new Discord.MessageEmbed()
-            .setColor('#d4ca08')
-            .setTitle("**Usuario Desmutado**")
-        message.channel.send({ embeds: [unmuteSuccess] }).then(m => m.react("✅").then(setTimeout(() => m.delete(), 5000)))
+        person.roles.remove(muteRole.id).then(() => message.react("✅").then(() => setTimeout(() => message.delete(), 5000)))
+        
     }
 }

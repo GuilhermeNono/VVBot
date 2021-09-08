@@ -5,9 +5,7 @@ module.exports = {
     aliases: ["tm"],
     description: "Comando para deixar o usuario mutado por tempo limitado.",
     async execute(client, message, args, Discord) {
-        //.tempmute @Discord 2m regra 1
-
-        if (message.deletable) message.delete();
+        //t!tempmute @Discord 2m regra 1
 
         //Verificando se o usuario tem o cargo necessario para usar esse comando
         let memberAuthor = message.guild.members.cache.get(message.author.id).roles.cache.map(role => role.id)
@@ -65,7 +63,7 @@ module.exports = {
         }
         //Criando uma variavel que armazene o motivo
         let reason = message.content.split(" ").splice(3).join(" ")
-        if(reason === '') reason = "Indefinido"
+        if (reason === '') reason = "Indefinido"
 
         //Criando, definindo a posição do cargo na hierarquia e setando para cada canal do servidor a devida permissão do cargo.
         let muteRole = await message.guild.roles.cache.find(role => role.name === "Muted");
@@ -139,10 +137,10 @@ module.exports = {
         setTimeout(() => {
             person.roles.remove(muteRole.id);
         }, time);
-        let muteSuccess = new Discord.MessageEmbed()
-            .setColor('#0aff70')
-            .setTitle("**Usuario mutado com sucesso.**")
-        pubChannel.send({ embeds: [muteDesc] }).then(() => privChannel.send({ embeds: [idDesc] }))
-        message.channel.send({ embeds: [muteSuccess] }).then(m => m.react("✅").then(setTimeout(() => m.delete(), 5000)))
+
+        pubChannel.send({ embeds: [muteDesc] }).then(() => {
+            privChannel.send({ embeds: [idDesc] })
+            message.react("✅").then(() => setTimeout(() => message.delete(), 5000))
+        })
     }
 }
