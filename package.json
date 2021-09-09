@@ -1,6 +1,6 @@
 {
   "name": "vvbot",
-  "version": "1.0.0",
+  "version": "b1.0.0",
   "description": "Bot Okami Coffee",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/GuilhermeNono/VVBot#readme",
   "dependencies": {
     "discord.js": "^13.1.0",
-    "discord.js-pagination": "^1.0.3",
+    "discordjs-button-pagination": "^2.0.0",
     "dotenv": "^10.0.0",
     "enmap": "^5.8.7",
     "fs": "^0.0.1-security",

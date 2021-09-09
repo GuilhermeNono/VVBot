@@ -8,8 +8,9 @@ Sinta-se a vontade para utilizar o codigo para criar seu proprio bot, contudo eu
 ### ✪ Objetivos primarios
 
 - [x] Comandos de punição
-- [ ] Sistemas de cargos por reação
+- [x] Sistemas de cargos por reação
 - [x] Contador de membros
+- [x] Comando "Help"
 
 #
 
