@@ -1,6 +1,6 @@
 {
   "name": "vvbot",
-  "version": "b1.0.0",
+  "version": "1.1.0",
   "description": "Bot Okami Coffee",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/GuilhermeNono/VVBot.git"
   },
   "author": "Guilherme Nono",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/GuilhermeNono/VVBot/issues"
   },
